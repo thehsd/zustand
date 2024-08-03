@@ -1,9 +1,12 @@
 import React from "react";
-import { useBasket } from "../store/basket";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/basketSlice";
+// import { useBasket } from "../store/basket";
 
 const ProductItem = ({ data }) => {
+  const dispatch = useDispatch();
   const { name, imageSrc, price } = data;
-  const { addItem } = useBasket((state) => state.actions);
+  // const { addItem } = useBasket((state) => state.actions);
   return (
     <div className="p-4 bg-gray-200  m-3">
       <img src={imageSrc} alt={name} />
@@ -13,7 +16,7 @@ const ProductItem = ({ data }) => {
         <span>{price}</span>
       </div>
       <button
-        onClick={() => addItem(data)}
+        onClick={() => dispatch(addItem(data))}
         className="p-3 rounded-lg bg-green-600 text-white m-2"
       >
         add item

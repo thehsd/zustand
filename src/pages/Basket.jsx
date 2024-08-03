@@ -1,20 +1,13 @@
-import React from "react";
-import { useBasket } from "../store/basket";
+import { useSelector } from "react-redux";
+import { basketState } from "../redux/basketSlice";
 import BasketItem from "../components/BasketItem";
-
 const Basket = () => {
-  const { items, invoice, actions } = useBasket((state) => state);
+  const { items, invoice } = useSelector(basketState);
   return (
     <>
       <p> total price: {invoice.totalPrice}</p>
       {items.map((item) => {
-        return (
-          <BasketItem
-            product={item}
-            key={item.id}
-            remove={actions.removeItem}
-          />
-        );
+        return <BasketItem product={item} key={item.id} />;
       })}
     </>
   );
