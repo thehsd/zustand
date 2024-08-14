@@ -1,15 +1,11 @@
-import { useSelector } from "react-redux";
-import { basketState } from "../redux/basketSlice";
-import BasketItem from "../components/BasketItem";
+import React from "react";
+import MdiTrash from "../components/icons/TrashIcon";
+
 const Basket = () => {
-  const { items, invoice } = useSelector(basketState);
   return (
-    <>
-      <p> total price: {invoice.totalPrice}</p>
-      {items.map((item) => {
-        return <BasketItem product={item} key={item.id} />;
-      })}
-    </>
+    <div>
+      <MdiTrash />
+    </div>
   );
 };
 
